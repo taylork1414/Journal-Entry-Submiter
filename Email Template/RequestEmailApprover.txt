@@ -1,0 +1,6 @@
+Dear <Approver>,
+
+Journal entry <JE description> has been posted and is waiting your approval.  Please review and then click either Approve or Reject in the voting buttons.  The journal entry and supporting documents are attached.  If you reject this entry, the document will be reversed in SAP.  
+
+Thanks,
+The Bot

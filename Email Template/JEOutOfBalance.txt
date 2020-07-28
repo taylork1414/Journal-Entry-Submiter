@@ -1,0 +1,6 @@
+Dear <Original Requestor>,
+
+Journal entry <JE description> is out of balance.  See original entry attached.  If necessary, please make revisions and re-submit your journal entry.
+
+Thanks,
+The Bot

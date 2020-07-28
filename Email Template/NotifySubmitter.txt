@@ -1,0 +1,12 @@
+Dear <Original Requestor>,
+
+Journal entry <JE description> has been received and the posting process in SAP has been initiated.  You will receive an email if:
+
+1) The entry was posted without errors
+2) The entry was rejected by SAP due to errors in the upload template
+3) The approver rejects the original entry
+
+If the entry is rejected, please make corrections and re-submit the journal entry if necessary.
+
+Thanks,
+The Bot
