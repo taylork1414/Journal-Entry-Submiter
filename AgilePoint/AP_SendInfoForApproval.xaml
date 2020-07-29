@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>396,845.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>396,885.333333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AP_SendInfoForApproval_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -80,12 +80,11 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Preparing info to pass to Agilepoint&quot;]" />
     <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Credentials]" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
-    <a:CreateInstanceActivity AgilepointServerURL="https://devas.apextoolgroup.com/agilepointserver" DisplayName="Start Workflow" sap:VirtualizedContainerService.HintSize="334,100" sap2010:WorkflowViewState.IdRef="CreateInstanceActivity_1" Password="Ag3l1@2019" ProcessModelName="Journal Entry Approval v2" UserName="ATG\Agile-Admin">
+    <a:CreateInstanceActivity AgilepointServerURL="https://devas.apextoolgroup.com/agilepointserver" DisplayName="Start Workflow" sap:VirtualizedContainerService.HintSize="334,100" sap2010:WorkflowViewState.IdRef="CreateInstanceActivity_1" Password="Ag3l1@2019" ProcessModelName="Journal Entry Process" UserName="ATG\Agile-Admin">
       <a:CreateInstanceActivity.AttributesList>
         <InArgument x:TypeArguments="x:String" x:Key="${/pd:AP/pd:processFields/pd:pFiscalYear}">[in_FiscalYear]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="${/pd:AP/pd:processFields/pd:pDocumentNumber}">[in_DocumentNumber]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="SuperProcInstID">[in_ProcessID]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="WorkObjID">[in_WorkID]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="WorkObjectID">[in_WorkID]</InArgument>
       </a:CreateInstanceActivity.AttributesList>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
