@@ -3,11 +3,12 @@
     <x:Property Name="in_Password" Type="InArgument(x:String)" />
     <x:Property Name="in_Username" Type="InArgument(x:String)" />
     <x:Property Name="in_Host" Type="InArgument(x:String)" />
+    <x:Property Name="in_FTPFolder" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>622,933</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>622,993</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FTP_TestConnection_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -55,10 +56,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Descreption: Testing connection to FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: n/a" DisplayName="FTP_TestConnection" sap:VirtualizedContainerService.HintSize="602,873" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Descreption: Testing connection to FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: &#xD;&#xA;   in_Password&#xD;&#xA;   in_Username&#xD;&#xA;   in_Host&#xD;&#xA;   in_FTPFolder" DisplayName="FTP_TestConnection" sap:VirtualizedContainerService.HintSize="602,933" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="localPath" />
     </Sequence.Variables>
@@ -69,7 +69,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Testing connection to FTP server &amp; making sure Journal Entry directory exists&quot;]" />
-    <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session" sap:VirtualizedContainerService.HintSize="560,447" Host="[in_Host]" sap2010:WorkflowViewState.IdRef="WithFtpSession_1" Password="[in_Password]" UseSftp="True" Username="[in_Username]">
+    <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="Open FTP session" sap:VirtualizedContainerService.HintSize="560,447" Host="[in_Host]" sap2010:WorkflowViewState.IdRef="WithFtpSession_1" Password="[in_Password]" UseSftp="True" Username="[in_Username]">
       <p:WithFtpSession.Body>
         <ActivityAction x:TypeArguments="p:IFtpSession">
           <ActivityAction.Argument>
@@ -84,7 +84,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:DirectoryExists ContinueOnError="False" DisplayName="Directory exists" Exists="[exist]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="DirectoryExists_1" RemotePath="/Journal Entry" />
+            <p:DirectoryExists ContinueOnError="False" DisplayName="Directory exists" Exists="[exist]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="DirectoryExists_1" RemotePath="[in_FTPFolder]" />
             <If Condition="[NOT exist]" DisplayName="If folder does not exist" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Throw DisplayName="Throw exception" Exception="[New BusinessRuleException(&quot;Journal Entry Folder doesn't exist on FTP Server&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />

@@ -56,6 +56,7 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376,538" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -79,6 +80,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_Password">[New System.Net.NetworkCredential(String.Empty, FTPpassword).Password]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Username">[FTPusername]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Host">[in_Config("FTP_Host").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FTPFolder">[in_Config("FTPFolderPath").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <a_:SAP_Login__Pass_in_Arguments_ DisplayName="SAP Login (Pass in Arguments)" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SAP_Login__Pass_in_Arguments__1" in_password="[SAPpassword]" in_pathSAP="C:\Program Files (x86)\SAP\FrontEnd\SAPgui\saplogon.exe" in_server="Q47" in_username="[SAPusername]" />

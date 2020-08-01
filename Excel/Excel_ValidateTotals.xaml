@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>936,2490</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,1837</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Excel_ValidateTotals_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -64,119 +64,144 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Check H2 &amp; H5 boxes. If totals in both of these boxes are not zero, an error exists.&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements:&#xA;   in_FilePath&#xA;   out_IsJEBalanced&#xA;   out_FiscalYear" DisplayName="Excel_ValidateTotals" sap:VirtualizedContainerService.HintSize="916,2390" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Check H2 &amp; H5 boxes. If totals in both of these boxes are not zero, an error exists.&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements:&#xA;   in_FilePath&#xA;   out_IsJEBalanced&#xA;   out_FiscalYear" DisplayName="Excel_ValidateTotals" sap:VirtualizedContainerService.HintSize="1023,1777" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="874,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening JE excel file to validate totals&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="874,1904" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[in_FilePath]">
-      <ui:ExcelApplicationScope.Body>
-        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Get Values from Excel &amp; Validate JE Totals" sap:VirtualizedContainerService.HintSize="840,1795.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="sheetName" />
-              <Variable x:TypeArguments="x:String" Name="controlTotalHeader" />
-              <Variable x:TypeArguments="x:Double" Name="controlTotalComp" />
-              <Variable x:TypeArguments="x:Double" Name="controlTotalDoc" />
-              <Variable x:TypeArguments="s:DateTime" Name="fiscalDate" />
-              <Variable x:TypeArguments="x:Double" Name="compCode" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet" sap:VirtualizedContainerService.HintSize="798,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[sheetName]" />
-            <ui:ExcelLookUpRange Range="{x:Null}" DisplayName="LookUp Range" sap:VirtualizedContainerService.HintSize="798,86.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelLookUpRange_1" Result="[controlTotalHeader]" SheetName="[sheetName]" Value="Control Totals (company code)" />
-            <ui:ExcelReadCell Cell="C1" DisplayName="Read Cell - Comp Code" sap:VirtualizedContainerService.HintSize="798,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[sheetName]">
-              <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="x:Double">[compCode]</OutArgument>
-              </ui:ExcelReadCell.Result>
-            </ui:ExcelReadCell>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="798,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[&quot;Company code - &quot; + compCode.ToString]" />
-            <If Condition="[NOT  (Convert.ToString(compCode).Equals(in_CompanyCode))]" sap:VirtualizedContainerService.HintSize="798,210.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
-              <If.Then>
-                <Throw Exception="[New BusinessRuleException(&quot;Company codes do not match&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
-              </If.Then>
-            </If>
-            <ui:ExcelReadCell Cell="H2" DisplayName="Read Cell - Control Totals Comp Code" sap:VirtualizedContainerService.HintSize="798,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="[sheetName]">
-              <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="x:Double">[controlTotalComp]</OutArgument>
-              </ui:ExcelReadCell.Result>
-            </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="H5" DisplayName="Read Cell - Control Totals Doc" sap:VirtualizedContainerService.HintSize="798,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="[sheetName]">
-              <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="x:Double">[controlTotalDoc]</OutArgument>
-              </ui:ExcelReadCell.Result>
-            </ui:ExcelReadCell>
-            <ui:ExcelReadCell Cell="C2" DisplayName="Read Cell - Fiscal Year" sap:VirtualizedContainerService.HintSize="798,58.6666666666667" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="[sheetName]">
-              <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="s:DateTime">[fiscalDate]</OutArgument>
-              </ui:ExcelReadCell.Result>
-            </ui:ExcelReadCell>
-            <Assign sap:VirtualizedContainerService.HintSize="798,62" sap2010:WorkflowViewState.IdRef="Assign_3">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[out_FiscalYear]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[fiscalDate.ToString("yyyy")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="798,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Total - comp code: &quot; + controlTotalComp.ToString + vbCr +&#xD;&#xA;&quot;Total - doc: &quot; + controlTotalDoc.ToString + vbCr +&#xD;&#xA;&quot;Fiscal Year: &quot; + out_FiscalYear]" />
-            <If Condition="[(controlTotalComp.Equals(0.00) OR controlTotalComp.Equals(0)) AND (controlTotalDoc.Equals(0.00) OR controlTotalDoc.Equals(0))]" DisplayName="Check if both equal to 0" sap:VirtualizedContainerService.HintSize="798,562" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,411.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="981,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening JE excel file to validate totals&quot;]" />
+    <If Condition="[Path.GetExtension(in_FilePath).Equals(&quot;.xlsx&quot;)]" DisplayName="If JE Extension is not an xlsx file" sap:VirtualizedContainerService.HintSize="981,1306" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="560,1158" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[in_FilePath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Get Values from Excel &amp; Validate JE Totals" sap:VirtualizedContainerService.HintSize="526,1049" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="sheetName" />
+                  <Variable x:TypeArguments="x:String" Name="controlTotalHeader" />
+                  <Variable x:TypeArguments="x:Double" Name="controlTotalComp" />
+                  <Variable x:TypeArguments="x:Double" Name="controlTotalDoc" />
+                  <Variable x:TypeArguments="s:DateTime" Name="fiscalDate" />
+                  <Variable x:TypeArguments="x:Double" Name="compCode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelGetWorkbookSheet DisplayName="Get Sheet Name" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[sheetName]" />
+                <ui:ExcelReadCell Cell="C1" DisplayName="Read Cell - Comp Code" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="[sheetName]">
+                  <ui:ExcelReadCell.Result>
+                    <OutArgument x:TypeArguments="x:Double">[compCode]</OutArgument>
+                  </ui:ExcelReadCell.Result>
+                </ui:ExcelReadCell>
+                <If Condition="[NOT  (Convert.ToString(compCode).Equals(in_CompanyCode))]" DisplayName="If company codes do not match" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Throw Exception="[New BusinessRuleException(&quot;Company codes do not match&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  </If.Then>
+                </If>
+                <ui:ExcelReadCell Cell="H2" DisplayName="Read Cell - Control Totals Comp Code" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="[sheetName]">
+                  <ui:ExcelReadCell.Result>
+                    <OutArgument x:TypeArguments="x:Double">[controlTotalComp]</OutArgument>
+                  </ui:ExcelReadCell.Result>
+                </ui:ExcelReadCell>
+                <ui:ExcelReadCell Cell="H5" DisplayName="Read Cell - Control Totals Doc" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="[sheetName]">
+                  <ui:ExcelReadCell.Result>
+                    <OutArgument x:TypeArguments="x:Double">[controlTotalDoc]</OutArgument>
+                  </ui:ExcelReadCell.Result>
+                </ui:ExcelReadCell>
+                <ui:ExcelReadCell Cell="C2" DisplayName="Read Cell - Fiscal Year" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="[sheetName]">
+                  <ui:ExcelReadCell.Result>
+                    <OutArgument x:TypeArguments="s:DateTime">[fiscalDate]</OutArgument>
+                  </ui:ExcelReadCell.Result>
+                </ui:ExcelReadCell>
+                <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[out_FiscalYear]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[fiscalDate.ToString("yyyy")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Total - comp code: &quot; + controlTotalComp.ToString + vbCr +&#xA;&quot;Total - doc: &quot; + controlTotalDoc.ToString + vbCr +&#xA;&quot;Fiscal Year: &quot; + out_FiscalYear]" />
+                <If Condition="[(controlTotalComp.Equals(0.00) OR controlTotalComp.Equals(0)) AND (controlTotalDoc.Equals(0.00) OR controlTotalDoc.Equals(0))]" DisplayName="Check if both equal to 0" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Boolean">[out_IsJEBalanced]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;JE is balanced&quot;]" />
-                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SaveAsTextFile " sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Excel\Excel_SaveAsTextFile.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_FilePath]</InArgument>
-                      <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">[out_TxtFilePath]</OutArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,282.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Boolean">[out_IsJEBalanced]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;JE is not balanced&quot;]" />
-                </Sequence>
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ExcelApplicationScope.Body>
-    </ui:ExcelApplicationScope>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="873,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Completed validation on JE Balance&quot;]" />
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,410" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[out_IsJEBalanced]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;JE is balanced&quot;]" />
+                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SaveAsTextFile " sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Excel\Excel_SaveAsTextFile.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[in_FilePath]</InArgument>
+                          <OutArgument x:TypeArguments="x:String" x:Key="out_FilePath">[out_TxtFilePath]</OutArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[out_IsJEBalanced]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;JE is not balanced&quot;]" />
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;JE File is not a valid excel file&quot;]" />
+          <Throw Exception="[new BusinessRuleException(&quot;JE is not an xlsx file&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="981,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Completed validation on JE Balance&quot;]" />
   </Sequence>
 </Activity>
