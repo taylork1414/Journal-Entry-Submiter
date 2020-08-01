@@ -125,7 +125,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </p:WithFtpSession>
-    <Assign sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign JE file path" sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_JEFilePath]</OutArgument>
       </Assign.To>
@@ -133,7 +133,7 @@
         <InArgument x:TypeArguments="x:String">[(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalJEExcelPath,"*.xlsx"))(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign JE Supporting doc path" sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[out_SupportFileList]</OutArgument>
       </Assign.To>
