@@ -4,7 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "AgilePoint.Workflow.Activities": "[1.0.2]",
-    "ATG-Helpers": "[1.0.13]",
+    "ATG-Helpers": "[1.0.14]",
     "Microsoft.Office.Interop.Outlook": "[15.0.4797.1003]",
     "UiPath.Excel.Activities": "[2.7.2]",
     "UiPath.FTP.Activities": "[1.0.7495.12930]",

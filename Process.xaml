@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>835,1826</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>820,1906</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -58,16 +58,17 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="815,1726" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="800,1806" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart sap:VirtualizedContainerService.HintSize="773,1642" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart sap:VirtualizedContainerService.HintSize="758,1642" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:String" Name="submitterID" />
         <Variable x:TypeArguments="x:String" Name="submitterEmail" />
@@ -105,13 +106,13 @@
           <av:Size x:Key="ShapeSize">60,75</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">340,77.5 340,113.5</av:PointCollection>
           <x:Double x:Key="Height">1605.5</x:Double>
-          <x:Double x:Key="Width">739</x:Double>
+          <x:Double x:Key="Width">724</x:Double>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
-        <x:Reference>__ReferenceID29</x:Reference>
+        <x:Reference>__ReferenceID32</x:Reference>
       </Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID3">
+      <FlowStep x:Name="__ReferenceID4">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">0,704.5</av:Point>
@@ -134,7 +135,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID2" Condition="[isJEBalanced]" DisplayName="JE Balanced?" sap:VirtualizedContainerService.HintSize="72,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+          <FlowDecision x:Name="__ReferenceID3" Condition="[isJEBalanced]" DisplayName="JE Balanced?" sap:VirtualizedContainerService.HintSize="72,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -145,156 +146,149 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <FlowDecision.True>
-              <FlowStep x:Name="__ReferenceID5">
+              <FlowStep x:Name="__ReferenceID30">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">0,794.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">100,845.5 100,899.04 336.5,899.04 336.5,946.5</av:PointCollection>
+                    <av:Point x:Key="ShapeLocation">0,809</av:Point>
+                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">100,831 100,881</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Post Journal Entry" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SAP\SAP_PostJournalEntry.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[JETextFile]</InArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_DidPostButtonAppear">[didPostSuccessfully]</OutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
+                <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Balanced" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_7" in_DBColumn="Balanced_Entry" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="Y">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:InvokeWorkflowFile>
+                </a:SQL_UpdateDBLog>
                 <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID6" Condition="[didPostSuccessfully]" DisplayName="Post button appear?" sap:VirtualizedContainerService.HintSize="112,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                  <FlowStep x:Name="__ReferenceID6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <av:Point x:Key="ShapeLocation">280.5,946.5</av:Point>
-                        <av:Size x:Key="ShapeSize">112,87</av:Size>
-                        <av:PointCollection x:Key="FalseConnector">392.5,990 447,990 447,1079.52 502.5,1079.52</av:PointCollection>
-                        <av:PointCollection x:Key="TrueConnector">280.5,990 250.5,990 250.5,989.52 200.5,989.52</av:PointCollection>
+                        <av:Point x:Key="ShapeLocation">0,881</av:Point>
+                        <av:Size x:Key="ShapeSize">200,51</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">200,906.5 336.5,906.5 336.5,946.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <FlowDecision.True>
-                      <FlowStep x:Name="__ReferenceID8">
+                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Post Journal Entry" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="SAP\SAP_PostJournalEntry.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[JETextFile]</InArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_DidPostButtonAppear">[didPostSuccessfully]</OutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InvokeWorkflowFile>
+                    <FlowStep.Next>
+                      <FlowDecision x:Name="__ReferenceID7" Condition="[didPostSuccessfully]" DisplayName="Post button appear?" sap:VirtualizedContainerService.HintSize="112,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <av:Point x:Key="ShapeLocation">0.5,964.02</av:Point>
-                            <av:Size x:Key="ShapeSize">200,51</av:Size>
-                            <av:PointCollection x:Key="ConnectorLocation">100.5,1015.02 100.5,1083.04 340,1083.04 340,1116.5</av:PointCollection>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <av:Point x:Key="ShapeLocation">280.5,946.5</av:Point>
+                            <av:Size x:Key="ShapeSize">112,87</av:Size>
+                            <av:PointCollection x:Key="FalseConnector">392.5,990 447,990 447,1079.52 502.5,1079.52</av:PointCollection>
+                            <av:PointCollection x:Key="TrueConnector">280.5,990 250.5,990 250.5,989.52 200.5,989.52</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Scrape Status + Info" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SAP\SAP_ScrapeDocumentInfo.xaml">
-                          <ui:InvokeWorkflowFile.Arguments>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyCode">[companyCode]</OutArgument>
-                            <OutArgument x:TypeArguments="x:String" x:Key="out_DocumentNumber">[documentNumber]</OutArgument>
-                            <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsStatusError">[postingError]</OutArgument>
-                          </ui:InvokeWorkflowFile.Arguments>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:InvokeWorkflowFile>
-                        <FlowStep.Next>
-                          <FlowDecision x:Name="__ReferenceID9" Condition="[NOT postingError]" DisplayName="Post Success?" sap:VirtualizedContainerService.HintSize="78,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                        <FlowDecision.True>
+                          <FlowStep x:Name="__ReferenceID9">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <av:Point x:Key="ShapeLocation">301,1116.5</av:Point>
-                                <av:Size x:Key="ShapeSize">78,87</av:Size>
-                                <av:PointCollection x:Key="TrueConnector">301,1160 200,1160</av:PointCollection>
-                                <av:PointCollection x:Key="FalseConnector">379,1160 444,1160 444,1079.52 502.5,1079.52</av:PointCollection>
+                                <av:Point x:Key="ShapeLocation">0.5,964.02</av:Point>
+                                <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">100.5,1015.02 100.5,1083.04 340,1083.04 340,1116.5</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <FlowDecision.True>
-                              <FlowStep x:Name="__ReferenceID24">
+                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Scrape Status + Info" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SAP\SAP_ScrapeDocumentInfo.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyCode">[companyCode]</OutArgument>
+                                <OutArgument x:TypeArguments="x:String" x:Key="out_DocumentNumber">[documentNumber]</OutArgument>
+                                <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsStatusError">[postingError]</OutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                            <FlowStep.Next>
+                              <FlowDecision x:Name="__ReferenceID10" Condition="[NOT postingError]" DisplayName="Post Success?" sap:VirtualizedContainerService.HintSize="78,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">0,1149</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
-                                    <av:PointCollection x:Key="ConnectorLocation">100,1171 100,1224.5</av:PointCollection>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <av:Point x:Key="ShapeLocation">301,1116.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">78,87</av:Size>
+                                    <av:PointCollection x:Key="TrueConnector">301,1160 200,1160</av:PointCollection>
+                                    <av:PointCollection x:Key="FalseConnector">379,1160 444,1160 444,1079.52 502.5,1079.52</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Post" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_1" in_DBColumn="Posted" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="Y">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </a:SQL_UpdateDBLog>
-                                <FlowStep.Next>
-                                  <FlowStep x:Name="__ReferenceID10">
+                                <FlowDecision.True>
+                                  <FlowStep x:Name="__ReferenceID25">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <av:Point x:Key="ShapeLocation">0,1224.5</av:Point>
-                                        <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                        <av:PointCollection x:Key="ConnectorLocation">100,1275.5 100,1315.5</av:PointCollection>
+                                        <av:Point x:Key="ShapeLocation">0,1149</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">100,1171 100,1224.5</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Display Document" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SAP\SAP_DisplayDocument.xaml">
-                                      <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_CompanyCode">[companyCode]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_FiscalYear">[fiscalYear]</InArgument>
-                                      </ui:InvokeWorkflowFile.Arguments>
+                                    <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Post" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_1" in_DBColumn="Posted" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="Y">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                    </ui:InvokeWorkflowFile>
+                                    </a:SQL_UpdateDBLog>
                                     <FlowStep.Next>
-                                      <FlowStep x:Name="__ReferenceID25">
+                                      <FlowStep x:Name="__ReferenceID11">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <av:Point x:Key="ShapeLocation">0,1315.5</av:Point>
-                                            <av:Size x:Key="ShapeSize">200,22</av:Size>
-                                            <av:PointCollection x:Key="ConnectorLocation">100,1337.5 100,1384.5</av:PointCollection>
+                                            <av:Point x:Key="ShapeLocation">0,1224.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">100,1275.5 100,1315.5</av:PointCollection>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Doc #" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_5" in_DBColumn="Document_Number" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="[documentNumber]">
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Display Document" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SAP\SAP_DisplayDocument.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_CompanyCode">[companyCode]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_FiscalYear">[fiscalYear]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                        </a:SQL_UpdateDBLog>
+                                        </ui:InvokeWorkflowFile>
                                         <FlowStep.Next>
-                                          <FlowStep x:Name="__ReferenceID11">
+                                          <FlowStep x:Name="__ReferenceID26">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <av:Point x:Key="ShapeLocation">0,1384.5</av:Point>
-                                                <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                                <av:PointCollection x:Key="ConnectorLocation">100,1435.5 100,1474.5</av:PointCollection>
+                                                <av:Point x:Key="ShapeLocation">0,1315.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">100,1337.5 100,1384.5</av:PointCollection>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Upload Document Attachments" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SAP\SAP_UploadDocumentAttachments.xaml">
-                                              <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="s:String[]" x:Key="in_FileList">[supportingFileList]</InArgument>
-                                              </ui:InvokeWorkflowFile.Arguments>
+                                            <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Doc #" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_5" in_DBColumn="Document_Number" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="[documentNumber]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                            </ui:InvokeWorkflowFile>
+                                            </a:SQL_UpdateDBLog>
                                             <FlowStep.Next>
-                                              <FlowStep x:Name="__ReferenceID27">
+                                              <FlowStep x:Name="__ReferenceID12">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <av:Point x:Key="ShapeLocation">0,1474.5</av:Point>
+                                                    <av:Point x:Key="ShapeLocation">0,1384.5</av:Point>
                                                     <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                                    <av:PointCollection x:Key="ConnectorLocation">100,1525.5 100,1554.02</av:PointCollection>
+                                                    <av:PointCollection x:Key="ConnectorLocation">100,1435.5 100,1474.5</av:PointCollection>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName=" Notify User" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
+                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="SAP Upload Document Attachments" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SAP\SAP_UploadDocumentAttachments.xaml">
                                                   <ui:InvokeWorkflowFile.Arguments>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterEmail]</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">NotifySubmitter</InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath" />
+                                                    <InArgument x:TypeArguments="s:String[]" x:Key="in_FileList">[supportingFileList]</InArgument>
                                                   </ui:InvokeWorkflowFile.Arguments>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -306,14 +300,19 @@
                                                   <FlowStep x:Name="__ReferenceID28">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <av:Point x:Key="ShapeLocation">0,1554.02</av:Point>
+                                                        <av:Point x:Key="ShapeLocation">0,1474.5</av:Point>
                                                         <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                                        <av:PointCollection x:Key="ConnectorLocation">200,1579.52 230,1579.52 230,1580 250,1580</av:PointCollection>
+                                                        <av:PointCollection x:Key="ConnectorLocation">100,1525.5 100,1554.02</av:PointCollection>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send info to AgilePoint" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="AgilePoint\AgilePoint_PostCalls.xaml">
+                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName=" Notify User" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
                                                       <ui:InvokeWorkflowFile.Arguments>
-                                                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterEmail]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">NotifySubmitter</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath" />
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[in_Config("JE_SharedFolderPath").ToString]</InArgument>
                                                       </ui:InvokeWorkflowFile.Arguments>
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -322,39 +321,67 @@
                                                       </sap:WorkflowViewStateService.ViewState>
                                                     </ui:InvokeWorkflowFile>
                                                     <FlowStep.Next>
-                                                      <FlowStep x:Name="__ReferenceID26">
+                                                      <FlowStep x:Name="__ReferenceID29">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <av:Point x:Key="ShapeLocation">250,1569</av:Point>
-                                                            <av:Size x:Key="ShapeSize">200,22</av:Size>
-                                                            <av:PointCollection x:Key="ConnectorLocation">450,1580 500,1580</av:PointCollection>
+                                                            <av:Point x:Key="ShapeLocation">0,1554.02</av:Point>
+                                                            <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                                            <av:PointCollection x:Key="ConnectorLocation">200,1579.52 230,1579.52 230,1580 250,1580</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Approver" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_6" in_DBColumn="Approver_Notified" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="[DateTime.Now.ToString]">
+                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send info to AgilePoint" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="AgilePoint\AgilePoint_PostCalls.xaml">
+                                                          <ui:InvokeWorkflowFile.Arguments>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemId">[workItemID]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_WorkObjectId">[workObjectID]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_Terminiation">No</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_FiscalYear">[fiscalYear]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("AgilePointCredentials").ToString]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_SetAttrURL">[in_Config("AgilePointSetAttrURL").ToString]</InArgument>
+                                                            <InArgument x:TypeArguments="x:String" x:Key="in_CompleteItemURL">[in_Config("AgilePointCompleteWorkflowURL").ToString]</InArgument>
+                                                          </ui:InvokeWorkflowFile.Arguments>
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                        </a:SQL_UpdateDBLog>
+                                                        </ui:InvokeWorkflowFile>
                                                         <FlowStep.Next>
-                                                          <FlowStep x:Name="__ReferenceID0">
+                                                          <FlowStep x:Name="__ReferenceID27">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                <av:Point x:Key="ShapeLocation">500,1554.5</av:Point>
-                                                                <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                                                <av:Point x:Key="ShapeLocation">250,1569</av:Point>
+                                                                <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                                <av:PointCollection x:Key="ConnectorLocation">450,1580 480,1580 480,1579.52 500,1579.52</av:PointCollection>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
-                                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Go to SAP Homepage" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="SAP\SAP_CleanStart.xaml">
-                                                              <ui:InvokeWorkflowFile.Arguments>
-                                                                <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                                                              </ui:InvokeWorkflowFile.Arguments>
+                                                            <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Approver" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_6" in_DBColumn="Approver_Notified" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="[DateTime.Now.ToString]">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                            </ui:InvokeWorkflowFile>
+                                                            </a:SQL_UpdateDBLog>
+                                                            <FlowStep.Next>
+                                                              <FlowStep x:Name="__ReferenceID0">
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <av:Point x:Key="ShapeLocation">500,1554.02</av:Point>
+                                                                    <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Go To SAP Homepage" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="SAP\SAP_GoToHomepage.xaml">
+                                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config("SupportingJEFilesPath").ToString]</InArgument>
+                                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                </ui:InvokeWorkflowFile>
+                                                              </FlowStep>
+                                                            </FlowStep.Next>
                                                           </FlowStep>
                                                         </FlowStep.Next>
                                                       </FlowStep>
@@ -368,45 +395,20 @@
                                       </FlowStep>
                                     </FlowStep.Next>
                                   </FlowStep>
-                                </FlowStep.Next>
-                              </FlowStep>
-                            </FlowDecision.True>
-                            <FlowDecision.False>
-                              <FlowStep x:Name="__ReferenceID1">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">502.5,1054.02</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                    <av:PointCollection x:Key="ConnectorLocation">602.5,1105.02 602.5,1135.02 600,1135.02 600,1144.5</av:PointCollection>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Take Screenshot " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[Environment.CurrentDirectory + "\Screenshots\"]</InArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[JEScreenshotPath]</InOutArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:InvokeWorkflowFile>
-                                <FlowStep.Next>
-                                  <FlowStep x:Name="__ReferenceID7">
+                                </FlowDecision.True>
+                                <FlowDecision.False>
+                                  <FlowStep x:Name="__ReferenceID1">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <av:Point x:Key="ShapeLocation">500,1144.5</av:Point>
+                                        <av:Point x:Key="ShapeLocation">502.5,1054.02</av:Point>
                                         <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                        <av:PointCollection x:Key="ConnectorLocation">600,1195.5 600,1235.5</av:PointCollection>
+                                        <av:PointCollection x:Key="ConnectorLocation">602.5,1105.02 602.5,1135.02 600,1135.02 600,1144.5</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Error Email " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Take Screenshot " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[JERequestID]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">Error</InArgument>
-                                        <InArgument x:TypeArguments="ui:Image" x:Key="in_Screenshot">[errorScreenshot]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[Environment.CurrentDirectory + "\Screenshots\"]</InArgument>
+                                        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[JEScreenshotPath]</InOutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -415,43 +417,115 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:InvokeWorkflowFile>
                                     <FlowStep.Next>
-                                      <FlowStep x:Name="__ReferenceID23">
+                                      <FlowStep x:Name="__ReferenceID8">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <av:Point x:Key="ShapeLocation">500,1235.5</av:Point>
-                                            <av:Size x:Key="ShapeSize">200,22</av:Size>
-                                            <av:PointCollection x:Key="ConnectorLocation">600,1257.5 600,1554.5</av:PointCollection>
+                                            <av:Point x:Key="ShapeLocation">500,1144.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">600,1195.5 600,1235.5</av:PointCollection>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Post" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_2" in_DBColumn="Posted" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="N">
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Error Email " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
+                                          <ui:InvokeWorkflowFile.Arguments>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[JERequestID]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">Error</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath">[JEScreenshotPath]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[in_Config("JE_SharedFolderPath").ToString]</InArgument>
+                                          </ui:InvokeWorkflowFile.Arguments>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                        </a:SQL_UpdateDBLog>
+                                        </ui:InvokeWorkflowFile>
                                         <FlowStep.Next>
-                                          <x:Reference>__ReferenceID0</x:Reference>
+                                          <FlowStep x:Name="__ReferenceID24">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">500,1235.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">600,1257.5 600,1287.5</av:PointCollection>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Post" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_2" in_DBColumn="Posted" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="N">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </a:SQL_UpdateDBLog>
+                                            <FlowStep.Next>
+                                              <FlowStep x:Name="__ReferenceID31">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">500,1287.5</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">600,1309.5 600,1463.5</av:PointCollection>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Status" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_8" in_DBColumn="Status" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="Error">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </a:SQL_UpdateDBLog>
+                                                <FlowStep.Next>
+                                                  <FlowStep x:Name="__ReferenceID2">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">500,1463.5</av:Point>
+                                                        <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">600,1514.5 600,1554.02</av:PointCollection>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send info to AP &amp; Terminate" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="AgilePoint\AgilePoint_PostCalls.xaml">
+                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_WorkItemId">[workItemID]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_WorkObjectId">[workObjectID]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Terminiation">Yes</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_FiscalYear">[fiscalYear]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[in_Config("AgilePointCredentials").ToString]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_SetAttrURL">[in_Config("AgilePointSetAttrURL").ToString]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_CompleteItemURL">[in_Config("AgilePointCompleteWorkflowURL").ToString]</InArgument>
+                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                    </ui:InvokeWorkflowFile>
+                                                    <FlowStep.Next>
+                                                      <x:Reference>__ReferenceID0</x:Reference>
+                                                    </FlowStep.Next>
+                                                  </FlowStep>
+                                                </FlowStep.Next>
+                                              </FlowStep>
+                                            </FlowStep.Next>
+                                          </FlowStep>
                                         </FlowStep.Next>
                                       </FlowStep>
                                     </FlowStep.Next>
                                   </FlowStep>
-                                </FlowStep.Next>
-                              </FlowStep>
-                            </FlowDecision.False>
-                          </FlowDecision>
-                        </FlowStep.Next>
-                      </FlowStep>
-                    </FlowDecision.True>
-                    <FlowDecision.False>
-                      <x:Reference>__ReferenceID1</x:Reference>
-                    </FlowDecision.False>
-                  </FlowDecision>
+                                </FlowDecision.False>
+                              </FlowDecision>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowDecision.True>
+                        <FlowDecision.False>
+                          <x:Reference>__ReferenceID1</x:Reference>
+                        </FlowDecision.False>
+                      </FlowDecision>
+                    </FlowStep.Next>
+                  </FlowStep>
                 </FlowStep.Next>
               </FlowStep>
             </FlowDecision.True>
             <FlowDecision.False>
-              <FlowStep x:Name="__ReferenceID4">
+              <FlowStep x:Name="__ReferenceID5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">490,794.5</av:Point>
@@ -466,6 +540,7 @@
                     <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">JEOutOfBalance</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath" />
+                    <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[in_Config("JE_SharedFolderPath").ToString]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -474,7 +549,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InvokeWorkflowFile>
                 <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID22">
+                  <FlowStep x:Name="__ReferenceID23">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">490,879</av:Point>
@@ -490,12 +565,12 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </a:SQL_UpdateDBLog>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID21">
+                      <FlowStep x:Name="__ReferenceID22">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">490,939</av:Point>
                             <av:Size x:Key="ShapeSize">200,22</av:Size>
-                            <av:PointCollection x:Key="ConnectorLocation">690,950 720,950 720,1580 700,1580</av:PointCollection>
+                            <av:PointCollection x:Key="ConnectorLocation">690,950 720,950 720,1489 700,1489</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <a:SQL_UpdateDBLog DisplayName="SQL_UpdateDB Status" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SQL_UpdateDBLog_4" in_DBColumn="Status" in_JERequestID="[JERequestID]" in_SQLConnectionString="[in_Config(&quot;SQLConnectionString&quot;).ToString]" in_Value="Manual">
@@ -506,7 +581,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </a:SQL_UpdateDBLog>
                         <FlowStep.Next>
-                          <x:Reference>__ReferenceID0</x:Reference>
+                          <x:Reference>__ReferenceID2</x:Reference>
                         </FlowStep.Next>
                       </FlowStep>
                     </FlowStep.Next>
@@ -517,8 +592,8 @@
           </FlowDecision>
         </FlowStep.Next>
       </FlowStep>
-      <x:Reference>__ReferenceID2</x:Reference>
-      <FlowStep x:Name="__ReferenceID12">
+      <x:Reference>__ReferenceID3</x:Reference>
+      <FlowStep x:Name="__ReferenceID13">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">0,624.5</av:Point>
@@ -544,10 +619,9 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
         <FlowStep.Next>
-          <x:Reference>__ReferenceID3</x:Reference>
+          <x:Reference>__ReferenceID4</x:Reference>
         </FlowStep.Next>
       </FlowStep>
-      <x:Reference>__ReferenceID4</x:Reference>
       <x:Reference>__ReferenceID5</x:Reference>
       <x:Reference>__ReferenceID6</x:Reference>
       <x:Reference>__ReferenceID7</x:Reference>
@@ -555,8 +629,9 @@
       <x:Reference>__ReferenceID9</x:Reference>
       <x:Reference>__ReferenceID10</x:Reference>
       <x:Reference>__ReferenceID11</x:Reference>
+      <x:Reference>__ReferenceID12</x:Reference>
       <x:Reference>__ReferenceID1</x:Reference>
-      <FlowStep x:Name="__ReferenceID18">
+      <FlowStep x:Name="__ReferenceID19">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">240,274.5</av:Point>
@@ -579,7 +654,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID14" Condition="[doesUserExist]" DisplayName="User Exists?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+          <FlowDecision x:Name="__ReferenceID15" Condition="[doesUserExist]" DisplayName="User Exists?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -590,7 +665,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <FlowDecision.True>
-              <FlowStep x:Name="__ReferenceID13">
+              <FlowStep x:Name="__ReferenceID14">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">0,384.5</av:Point>
@@ -611,7 +686,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InvokeWorkflowFile>
                 <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID16" Condition="[isUserValidated]" DisplayName="User Validated?" sap:VirtualizedContainerService.HintSize="85,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                  <FlowDecision x:Name="__ReferenceID17" Condition="[isUserValidated]" DisplayName="User Validated?" sap:VirtualizedContainerService.HintSize="85,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -622,7 +697,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <FlowDecision.True>
-                      <FlowStep x:Name="__ReferenceID20">
+                      <FlowStep x:Name="__ReferenceID21">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">0.641666666666993,534.02</av:Point>
@@ -648,17 +723,17 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:InvokeWorkflowFile>
                         <FlowStep.Next>
-                          <x:Reference>__ReferenceID12</x:Reference>
+                          <x:Reference>__ReferenceID13</x:Reference>
                         </FlowStep.Next>
                       </FlowStep>
                     </FlowDecision.True>
                     <FlowDecision.False>
-                      <FlowStep x:Name="__ReferenceID17">
+                      <FlowStep x:Name="__ReferenceID18">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">475.641666666667,534.02</av:Point>
                             <av:Size x:Key="ShapeSize">200,51</av:Size>
-                            <av:PointCollection x:Key="ConnectorLocation">675.641666666667,559.52 705.641666666667,559.52 705.641666666667,1580 700,1580</av:PointCollection>
+                            <av:PointCollection x:Key="ConnectorLocation">675.641666666667,559.52 714,559.52 714,1489 700,1489</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Rejection Email" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
@@ -668,6 +743,7 @@
                             <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">SecurityRejection</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath" />
+                            <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[in_Config("JE_SharedFolderPath").ToString]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -676,7 +752,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:InvokeWorkflowFile>
                         <FlowStep.Next>
-                          <x:Reference>__ReferenceID0</x:Reference>
+                          <x:Reference>__ReferenceID2</x:Reference>
                         </FlowStep.Next>
                       </FlowStep>
                     </FlowDecision.False>
@@ -685,7 +761,7 @@
               </FlowStep>
             </FlowDecision.True>
             <FlowDecision.False>
-              <FlowStep x:Name="__ReferenceID15">
+              <FlowStep x:Name="__ReferenceID16">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">470.641666666667,398</av:Point>
@@ -704,12 +780,12 @@
           </FlowDecision>
         </FlowStep.Next>
       </FlowStep>
-      <x:Reference>__ReferenceID13</x:Reference>
       <x:Reference>__ReferenceID14</x:Reference>
       <x:Reference>__ReferenceID15</x:Reference>
       <x:Reference>__ReferenceID16</x:Reference>
       <x:Reference>__ReferenceID17</x:Reference>
-      <FlowStep x:Name="__ReferenceID29">
+      <x:Reference>__ReferenceID18</x:Reference>
+      <FlowStep x:Name="__ReferenceID32">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">240,113.5</av:Point>
@@ -841,7 +917,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:MultipleAssign>
         <FlowStep.Next>
-          <FlowStep x:Name="__ReferenceID19">
+          <FlowStep x:Name="__ReferenceID20">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">240,194.5</av:Point>
@@ -857,22 +933,25 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:LogMessage>
             <FlowStep.Next>
-              <x:Reference>__ReferenceID18</x:Reference>
+              <x:Reference>__ReferenceID19</x:Reference>
             </FlowStep.Next>
           </FlowStep>
         </FlowStep.Next>
       </FlowStep>
-      <x:Reference>__ReferenceID19</x:Reference>
       <x:Reference>__ReferenceID20</x:Reference>
       <x:Reference>__ReferenceID21</x:Reference>
       <x:Reference>__ReferenceID22</x:Reference>
       <x:Reference>__ReferenceID23</x:Reference>
       <x:Reference>__ReferenceID24</x:Reference>
       <x:Reference>__ReferenceID25</x:Reference>
-      <x:Reference>__ReferenceID0</x:Reference>
       <x:Reference>__ReferenceID26</x:Reference>
       <x:Reference>__ReferenceID27</x:Reference>
       <x:Reference>__ReferenceID28</x:Reference>
+      <x:Reference>__ReferenceID29</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID30</x:Reference>
+      <x:Reference>__ReferenceID31</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>

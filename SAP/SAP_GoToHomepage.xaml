@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>496,692</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,732</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SAP_GoToHomepage_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -52,11 +52,10 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Go back to SAP Easy access page&#xD;&#xA;Pre-Condition: Depends on scenario&#xD;&#xA;Post-Condition: SAP Easy Access Page&#xD;&#xA;Arguements: &#xD;&#xA;    in_FolderPath" DisplayName="SAP_GoToHomepage" sap:VirtualizedContainerService.HintSize="476,632" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Go back to SAP Easy access page&#xA;Pre-Condition: Depends on scenario&#xA;Post-Condition: SAP Easy Access Page&#xA;Arguements: &#xA;    in_FolderPath" DisplayName="SAP_GoToHomepage" sap:VirtualizedContainerService.HintSize="476,632" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="config" />
     </Sequence.Variables>
@@ -84,6 +83,6 @@
         </ActivityAction>
       </ui:WindowScope.Body>
     </ui:WindowScope>
-    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Local JE Files" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ config(&quot;SupportingJEFilesPath&quot;).ToString]" />
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Local JE Files" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[in_FolderPath]" />
   </Sequence>
 </Activity>

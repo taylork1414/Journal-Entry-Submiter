@@ -5,11 +5,12 @@
     <x:Property Name="in_RecipientName" Type="InArgument(x:String)" />
     <x:Property Name="in_EmailType" Type="InArgument(x:String)" />
     <x:Property Name="in_ScreenshotPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SharedFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1166.66666666667,1108</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1257,1158</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Outlook_SendNotificationEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -60,14 +61,14 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Send an email requesting either letting user know of successful JE post or that there was an error processing the JE&#xA;Pre-Condition: n/a &#xA;Post-Condition: n/a&#xA;Arguements:&#xA;  in_IsError&#xA;  in_RecipientEmail&#xA;  in_ErrorMsg&#xA;  in_Screenshot&#xA;  in_SupportingDocsLink&#xA;  in_DocumentNumber&#xA;  in_CompanyCode&#xA;  in_FiscalYear" DisplayName="Outlook_SendNotificationEmail" sap:VirtualizedContainerService.HintSize="1236.66666666667,1078" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Send an email requesting either letting user know of successful JE post or that there was an error processing the JE&#xA;Pre-Condition: n/a &#xA;Post-Condition: n/a&#xA;Arguements:&#xA;  in_IsError&#xA;  in_RecipientEmail&#xA;  in_ErrorMsg&#xA;  in_Screenshot&#xA;  in_SupportingDocsLink&#xA;  in_DocumentNumber&#xA;  in_CompanyCode&#xA;  in_FiscalYear" DisplayName="Outlook_SendNotificationEmail" sap:VirtualizedContainerService.HintSize="1237,1058" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart sap:VirtualizedContainerService.HintSize="1194.66666666667,774" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart sap:VirtualizedContainerService.HintSize="1195,774" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:String" Name="emailBody" />
         <Variable x:TypeArguments="x:String" Name="emailSubject" />
@@ -77,45 +78,45 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <av:Point x:Key="ShapeLocation">550,22.5</av:Point>
-          <av:Size x:Key="ShapeSize">60,74.6666666666667</av:Size>
+          <av:Size x:Key="ShapeSize">60,75</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">580,97.1666666666667 580,127.166666666667 582.333333333333,127.166666666667 582.333333333333,146.5</av:PointCollection>
-          <x:Double x:Key="Width">1160.6666666666667</x:Double>
-          <x:Double x:Key="Height">738.16666666666663</x:Double>
+          <x:Double x:Key="Width">1160.666666666667</x:Double>
+          <x:Double x:Key="Height">738.5</x:Double>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
         <x:Reference>__ReferenceID14</x:Reference>
       </Flowchart.StartNode>
-      <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID14" DisplayName="Which Template?" Expression="[in_EmailType]" sap:VirtualizedContainerService.HintSize="94.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
+      <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID14" DisplayName="Which Template?" Expression="[in_EmailType]" sap:VirtualizedContainerService.HintSize="96,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">535,146.5</av:Point>
-            <av:Size x:Key="ShapeSize">94.6666666666667,86.6666666666667</av:Size>
-            <av:PointCollection x:Key="NotifySubmitterConnector">606,233.166666666667 606,263.166666666667 751,263.166666666667 751,304.5</av:PointCollection>
+            <av:Size x:Key="ShapeSize">96,87</av:Size>
+            <av:PointCollection x:Key="NotifySubmitterConnector">607,233.5 607,263.5 751,263.5 751,304.5</av:PointCollection>
             <av:PointCollection x:Key="JEOutOfBalanceConnector">535,189.833333333333 505,189.833333333333 505,190.833333333333 230,190.833333333333</av:PointCollection>
             <av:PointCollection x:Key="SecurityRejectionConnector">558.666666666667,233.166666666667 558.666666666667,263.166666666667 380,263.166666666667 380,303.666666666667</av:PointCollection>
-            <av:PointCollection x:Key="ErrorConnector">629.666666666667,189.833333333333 929.666666666667,189.833333333333</av:PointCollection>
+            <av:PointCollection x:Key="ErrorConnector">631,190 661,190 661,189 929.666666666667,189</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <FlowStep x:Key="NotifySubmitter" x:Name="__ReferenceID1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">651,304.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">751,357.166666666667 751,395.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">751,355.5 751,395.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile Content="[emailBody]" DisplayName="Notify Submitter Template" FileName="Email Template\NotifySubmitter.txt" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+          <ui:ReadTextFile Content="[emailBody]" DisplayName="Notify Submitter Template" FileName="[in_SharedFolderPath+ &quot;NotifySubmitter.txt&quot;]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">620,395.5</av:Point>
-                  <av:Size x:Key="ShapeSize">262,62</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">751,457.5 751,497.5</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">262,60</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">751,455.5 751,497.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[emailSubject]</OutArgument>
                 </Assign.To>
@@ -133,11 +134,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">651,497.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">751,550.166666666667 751,610.833333333333 680,610.833333333333</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">751,548.5 751,610 680,610</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sending email to notify submitter that JE Doc#&quot; + in_DocumentNumber + &quot; is waiting approval&quot;]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Sending email to notify submitter that JE Doc#&quot; + in_DocumentNumber + &quot; is waiting approval&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,11 +150,11 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">480,584.5</av:Point>
-                          <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">580,637.166666666667 580,685.5</av:PointCollection>
+                          <av:Size x:Key="ShapeSize">200,51</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">580,635.5 580,685.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:MultipleAssign DisplayName="Update User Name &amp; Doc #" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                      <ui:MultipleAssign DisplayName="Update User Name &amp; Doc #" sap:VirtualizedContainerService.HintSize="338,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                         <ui:MultipleAssign.AssignOperations>
                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -161,7 +162,7 @@
                                 <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
                               </ui:AssignOperation.To>
                               <ui:AssignOperation.Value>
-                                <InArgument x:TypeArguments="x:String">[emailBody.Replace("&lt;Original Requestor&gt;" , Split(in_RecipientName, ",") (1) + " " +Split(in_RecipientName, ",")(0) )]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[emailBody.Replace("&lt;Original Requestor&gt;" , Split(in_RecipientName, ",") (1).Trim)]</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -180,10 +181,10 @@
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">480,685.5</av:Point>
-                              <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                              <av:Size x:Key="ShapeSize">200,51</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[emailBody]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[emailSubject]" To="[in_RecipientEmail]">
+                          <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[emailBody]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[emailSubject]" To="[in_RecipientEmail]">
                             <ui:SendOutlookMail.Files>
                               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                 <InArgument x:TypeArguments="x:String">[in_ScreenshotPath]</InArgument>
@@ -208,26 +209,26 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">929.666666666667,163.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,216.166666666667 1029.66666666667,266.166666666667</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,214.5 1029.66666666667,266.166666666667</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile Content="[emailBody]" DisplayName="Error Template" FileName="Email Template\Error.txt" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
+          <ui:ReadTextFile Content="[emailBody]" DisplayName="Error Template" FileName="[in_SharedFolderPath+ &quot;Error.txt&quot;]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadTextFile_5" />
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">898.666666666667,266.166666666667</av:Point>
-                  <av:Size x:Key="ShapeSize">262,62</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,328.166666666667 1029.66666666667,368.166666666667</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">262,60</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,326.166666666667 1029.66666666667,368.166666666667</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[emailSubject]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">["Journal Entry - Error Occured"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["Business Exception error"]</InArgument>
                 </Assign.Value>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -240,11 +241,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">929.666666666667,368.166666666667</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,420.833333333333 1029.66666666667,610.833333333333 680,610.833333333333</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">1029.66666666667,419.166666666667 1029.66666666667,610 680,610</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Sending JE error email for &quot; + in_DocumentNumber]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Sending JE error email for &quot; + in_DocumentNumber]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -263,21 +264,21 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">30,164.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">130,217.166666666667 130,247.166666666667 131,247.166666666667 131,255.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">130,215.5 130,245.5 131,245.5 131,255.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile Content="[emailBody]" DisplayName="JE Out of Balance Template" FileName="Email Template\JEOutOfBalance.txt" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_4" />
+          <ui:ReadTextFile Content="[emailBody]" DisplayName="JE Out of Balance Template" FileName="[in_SharedFolderPath+ &quot;JEOutOfBalance.txt&quot;]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadTextFile_4" />
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">0,255.5</av:Point>
-                  <av:Size x:Key="ShapeSize">262,62</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">131,317.5 131,357.5</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">262,60</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">131,315.5 131,357.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[emailSubject]</OutArgument>
                 </Assign.To>
@@ -295,11 +296,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">31,357.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">131,410.166666666667 131,610.833333333333 480,610.833333333333</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">131,408.5 131,610 480,610</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending JE Out of Balance email for &quot; + in_DocumentNumber]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending JE Out of Balance email for &quot; + in_DocumentNumber]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -318,21 +319,21 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">280,303.666666666667</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">380,356.333333333333 380,399</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">380,354.666666666667 380,399</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ReadTextFile Content="[emailBody]" DisplayName="Security Rejection Template" FileName="Email Template\SecurityRejection.txt" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+          <ui:ReadTextFile Content="[emailBody]" DisplayName="Security Rejection Template" FileName="[in_SharedFolderPath+ &quot;SecurityRejection.txt&quot;]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">249,399</av:Point>
-                  <av:Size x:Key="ShapeSize">262,62</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">380,461 380,501</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">262,60</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">380,459 380,501</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign DisplayName="Assign email subject" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[emailSubject]</OutArgument>
                 </Assign.To>
@@ -350,11 +351,11 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">280,501</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">380,553.666666666667 380,610.833333333333 480,610.833333333333</av:PointCollection>
+                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">380,552 380,610 480,610</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending security rejection email for &quot; + in_DocumentNumber]">
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending security rejection email for &quot; + in_DocumentNumber]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
