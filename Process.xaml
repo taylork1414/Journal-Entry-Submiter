@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>820,1906</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>820,1866</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -307,9 +307,9 @@
                                                     </sap:WorkflowViewStateService.ViewState>
                                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName=" Notify User" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
                                                       <ui:InvokeWorkflowFile.Arguments>
-                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">[submitterEmail]</InArgument>
                                                         <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[documentNumber]</InArgument>
-                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterEmail]</InArgument>
+                                                        <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                                                         <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">NotifySubmitter</InArgument>
                                                         <InArgument x:TypeArguments="x:String" x:Key="in_ScreenshotPath" />
                                                         <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderPath">[in_Config("JE_SharedFolderPath").ToString]</InArgument>
@@ -370,7 +370,7 @@
                                                                     <av:Size x:Key="ShapeSize">200,51</av:Size>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Go To SAP Homepage" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="SAP\SAP_GoToHomepage.xaml">
+                                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Go To SAP Homepage" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="SAP\SAP_GoToHomepage.xaml">
                                                                   <ui:InvokeWorkflowFile.Arguments>
                                                                     <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config("SupportingJEFilesPath").ToString]</InArgument>
                                                                   </ui:InvokeWorkflowFile.Arguments>
@@ -427,7 +427,7 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Error Email " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">[submitterEmail]</InArgument>
                                             <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[JERequestID]</InArgument>
                                             <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                                             <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">Error</InArgument>
@@ -535,7 +535,7 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send JE Balance Email " sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">[submitterEmail]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[JERequestID]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">JEOutOfBalance</InArgument>
@@ -601,7 +601,7 @@
             <av:PointCollection x:Key="ConnectorLocation">100,675.5 100,704.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="FTP Retrieve Files" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FTP\FTP_RetrieveFiles.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="FTP Retrieve Files" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FTP\FTP_RetrieveFiles.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_Host">[in_Config("FTP_Host").ToString]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_FTPJEFilePath">[FTPJEExcelFilePath]</InArgument>
@@ -611,6 +611,7 @@
             <OutArgument x:TypeArguments="x:String" x:Key="out_JEFilePath">[JEFilePathLocal]</OutArgument>
             <OutArgument x:TypeArguments="s:String[]" x:Key="out_SupportFileList">[supportingFileList]</OutArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_FTPCredential">[in_Config("FTP_Credentials").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_JEID">[JERequestID]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -738,7 +739,7 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Send Rejection Email" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Outlook\Outlook_SendNotificationEmail.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">RPA@ApexToolGroup.com</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RecipientEmail">[submitterEmail]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_DocumentNumber">[JERequestID]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_RecipientName">[submitterName]</InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_EmailType">SecurityRejection</InArgument>

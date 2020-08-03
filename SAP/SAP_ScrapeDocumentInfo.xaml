@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>935,1886</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>935,1785</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SAP_ScrapeDocumentInfo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -56,10 +56,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Capture the resulting text in status bar and parse out the document number and company code&#xA;Pre-Condition: Upload GL page (Post upload)&#xA;Post-Condition: Upload GL page (Post upload)&#xA;Arguements:&#xA;    out_CompanyCode&#xA;    out_DocumentNumber" DisplayName="SAP_ScrapeDocumentInfo" sap:VirtualizedContainerService.HintSize="915,1786" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Capture the resulting text in status bar and parse out the document number and company code&#xA;Pre-Condition: Upload GL page (Post upload)&#xA;Post-Condition: Upload GL page (Post upload)&#xA;Arguements:&#xA;    out_CompanyCode&#xA;    out_DocumentNumber" DisplayName="SAP_ScrapeDocumentInfo" sap:VirtualizedContainerService.HintSize="915,1685" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -67,13 +66,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="873,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Scraping info for bottom status bar&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'saplogon.exe Upload'" sap:VirtualizedContainerService.HintSize="873,1330" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="c0c56572754176d5737cbcd6e64c4df4" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Upload GL from Excel' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach To SAP Upload" sap:VirtualizedContainerService.HintSize="873,1229" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4421877884fb14e718bbe7864fb56d4d" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Upload GL from Excel' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1184" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1083" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="statusBarText" />
             </Sequence.Variables>
@@ -94,7 +93,7 @@
                 </ui:CursorPosition>
               </ui:Click.CursorPosition>
               <ui:Click.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="5d87660c7db509c39915f86c11d201ed" Selector="&lt;sap id='tbar[1]/btn[5]' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="96bc7181db292d36aabc669db8317e5a" Selector="&lt;sap id='tbar[1]/btn[5]' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -106,7 +105,7 @@
             </ui:Click>
             <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get status bar text" sap:VirtualizedContainerService.HintSize="797,106" sap2010:WorkflowViewState.IdRef="GetFullText_2">
               <ui:GetFullText.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="75d26cf845ac5c73f4395613458bf95e" Selector="&lt;sap id='sbar/pane[0]' /&gt;">
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="fc0a78115d5d29f0a438b4ec3b928388" Selector="&lt;sap id='sbar/pane[0]' /&gt;">
                   <ui:Target.TimeoutMS>
                     <InArgument x:TypeArguments="x:Int32" />
                   </ui:Target.TimeoutMS>
@@ -119,7 +118,6 @@
                 <OutArgument x:TypeArguments="x:String">[statusBarText]</OutArgument>
               </ui:GetFullText.Text>
             </ui:GetFullText>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="797,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[statusBarText]" />
             <If Condition="[statusBarText.Contains(&quot;was posted in company code&quot;)]" DisplayName="Check if error status or document info" sap:VirtualizedContainerService.HintSize="797,699" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,552" sap2010:WorkflowViewState.IdRef="Sequence_4">
