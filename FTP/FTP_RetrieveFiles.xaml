@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>700,1475</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1163,1853</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FTP_RetrieveFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
@@ -63,10 +63,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Descreption: Retrieve JE file and supplementary files from FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: &#xA;    out_FileList" DisplayName="FTP_RetrieveFiles" sap:VirtualizedContainerService.HintSize="680,1375" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Descreption: Retrieve JE file and supplementary files from FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: &#xA;  in_Host&#xD;&#xA;  in_FTPJEFilePath&#xD;&#xA;  in_FTPSupportingFileListPath&#xD;&#xA;  in_LocalSupportDocsPath&#xD;&#xA;  in_LocalJEExcelPath&#xD;&#xA;  in_JEID&#xD;&#xA;  in_FTPCredential&#xD;&#xA;  out_JEFilePath&#xD;&#xA;  out_SuppotFileList  &#xD;&#xA;" DisplayName="FTP_RetrieveFiles" sap:VirtualizedContainerService.HintSize="1143,1753" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="FTPpassword" />
       <Variable x:TypeArguments="x:String" Name="FTPusername" />
@@ -78,15 +77,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="638,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Retrieving JE file and supplementary files&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_FTPCredential]" DisplayName="Get FTP Credential" sap:VirtualizedContainerService.HintSize="638,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[FTPpassword]" Username="[FTPusername]" />
-    <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session" sap:VirtualizedContainerService.HintSize="638,672" Host="[in_Host]" sap2010:WorkflowViewState.IdRef="WithFtpSession_1" Password="[New System.Net.NetworkCredential(String.Empty, FTPpassword).Password]" UseSftp="True" Username="[FTPusername]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1101,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Retrieving JE file and supplementary files&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_FTPCredential]" DisplayName="Get FTP Credential" sap:VirtualizedContainerService.HintSize="1101,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[FTPpassword]" Username="[FTPusername]" />
+    <p:WithFtpSession ClientCertificatePassword="{x:Null}" ClientCertificatePath="{x:Null}" Port="{x:Null}" AcceptAllCertificates="True" ContinueOnError="False" DisplayName="With ftp session" sap:VirtualizedContainerService.HintSize="1101,1013" Host="[in_Host]" sap2010:WorkflowViewState.IdRef="WithFtpSession_1" Password="[New System.Net.NetworkCredential(String.Empty, FTPpassword).Password]" UseSftp="True" Username="[FTPusername]">
       <p:WithFtpSession.Body>
         <ActivityAction x:TypeArguments="p:IFtpSession">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,586" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1067,927" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="exist" />
               <Variable x:TypeArguments="x:Boolean" Name="tst" />
@@ -96,28 +95,78 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:DownloadFiles ContinueOnError="False" Create="True" DisplayName="Download files" sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="DownloadFiles_2" LocalPath="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalJEExcelPath + &quot;\&quot; + in_JEID]" Overwrite="True" Recursive="False" RemotePath="[in_FTPJEFilePath]" />
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,432" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_FTPSupportingFileListPath]">
-              <ui:ForEach.Body>
-                <ActivityAction x:TypeArguments="x:String">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:String" Name="item" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,299" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <p:DownloadFiles ContinueOnError="False" Create="True" DisplayName="Download JE Excel file" sap:VirtualizedContainerService.HintSize="1025,22" sap2010:WorkflowViewState.IdRef="DownloadFiles_2" LocalPath="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalJEExcelPath + &quot;\&quot; + in_JEID]" Overwrite="True" Recursive="False" RemotePath="[in_FTPJEFilePath]" />
+            <If Condition="[(String.Join(&quot;&quot;, in_FTPSupportingFileListPath).Trim).Equals(&quot;&quot;)]" DisplayName="Check if array is holding empty values" sap:VirtualizedContainerService.HintSize="1025,773" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <Sequence DisplayName="Array has no values" sap:VirtualizedContainerService.HintSize="376,410" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;No supplementary files to save&quot;]" />
+                  <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create JE Supp Folder" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalSupportDocsPath + &quot;\&quot; + in_JEID]" />
+                  <Assign DisplayName="Assign JE Supporting doc path" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:String[]">[out_SupportFileList]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:String[]">[{}]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Array has values " sap:VirtualizedContainerService.HintSize="604,626" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,434" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_FTPSupportingFileListPath]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,301" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[item.Trim.Length &lt; 1]" DisplayName="If item is empty string" sap:VirtualizedContainerService.HintSize="484,209" sap2010:WorkflowViewState.IdRef="If_3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Else>
+                              <p:DownloadFiles ContinueOnError="False" Create="True" DisplayName="Download files" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="DownloadFiles_1" LocalPath="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalSupportDocsPath + &quot;\&quot; + in_JEID]" Overwrite="True" Recursive="False" RemotePath="[item]" />
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[item.Length &lt; 1]" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_2">
-                      <If.Else>
-                        <p:DownloadFiles ContinueOnError="False" Create="True" DisplayName="Download files" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="DownloadFiles_1" LocalPath="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalSupportDocsPath + &quot;\&quot; + in_JEID]" Overwrite="True" Recursive="False" RemotePath="[item]" />
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEach.Body>
-            </ui:ForEach>
+                  </ui:ForEach>
+                  <Assign DisplayName="Assign JE Supporting doc path" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="s:String[]">[out_SupportFileList]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalSupportDocsPath+ "\" + in_JEID)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
           </Sequence>
         </ActivityAction>
       </p:WithFtpSession.Body>
@@ -128,22 +177,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </p:WithFtpSession>
-    <Assign DisplayName="Assign JE file path" sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign JE file path" sap:VirtualizedContainerService.HintSize="1101,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_JEFilePath]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalJEExcelPath + "\" + in_JEID,"*.xlsx"))(0)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalJEExcelPath + "\" + in_JEID))(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Assign JE Supporting doc path" sap:VirtualizedContainerService.HintSize="638,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-      <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[out_SupportFileList]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_LocalSupportDocsPath+ "\" + in_JEID)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="638,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Successfuly retrieved JE file and supplementary files&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1101,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Successfuly retrieved JE file and supplementary files&quot;]" />
   </Sequence>
 </Activity>

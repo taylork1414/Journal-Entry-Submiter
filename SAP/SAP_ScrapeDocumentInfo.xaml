@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>935,1785</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>935,1830</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SAP_ScrapeDocumentInfo_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -58,7 +58,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Capture the resulting text in status bar and parse out the document number and company code&#xA;Pre-Condition: Upload GL page (Post upload)&#xA;Post-Condition: Upload GL page (Post upload)&#xA;Arguements:&#xA;    out_CompanyCode&#xA;    out_DocumentNumber" DisplayName="SAP_ScrapeDocumentInfo" sap:VirtualizedContainerService.HintSize="915,1685" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Capture the resulting text in status bar and parse out the document number and company code&#xA;Pre-Condition: Upload GL page (Post upload)&#xA;Post-Condition: Upload GL page (Post upload)&#xA;Arguements:&#xA;    out_CompanyCode&#xA;    out_DocumentNumber&#xD;&#xA;    out_IsStatusError" DisplayName="SAP_ScrapeDocumentInfo" sap:VirtualizedContainerService.HintSize="915,1730" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -66,13 +66,13 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="873,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Scraping info for bottom status bar&quot;]" />
-    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach To SAP Upload" sap:VirtualizedContainerService.HintSize="873,1229" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4421877884fb14e718bbe7864fb56d4d" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Upload GL from Excel' /&gt;">
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach To SAP Upload" sap:VirtualizedContainerService.HintSize="873,1259" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="4421877884fb14e718bbe7864fb56d4d" Selector="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Upload GL from Excel' /&gt;">
       <ui:WindowScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1083" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,1113" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="statusBarText" />
             </Sequence.Variables>
@@ -118,9 +118,10 @@
                 <OutArgument x:TypeArguments="x:String">[statusBarText]</OutArgument>
               </ui:GetFullText.Text>
             </ui:GetFullText>
-            <If Condition="[statusBarText.Contains(&quot;was posted in company code&quot;)]" DisplayName="Check if error status or document info" sap:VirtualizedContainerService.HintSize="797,699" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="797,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Status: &quot; + statusBarText]" />
+            <If Condition="[statusBarText.Contains(&quot;was posted in company code&quot;)]" DisplayName="Check if error status or document info" sap:VirtualizedContainerService.HintSize="797,598" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,552" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,451" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="docDetails" />
                   </Sequence.Variables>
@@ -154,7 +155,6 @@
                       <InArgument x:TypeArguments="x:String">[docDetails.ElementAt(1).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Doc # - &quot; + out_DocumentNumber + vbCr + &quot;Comp code - &quot; + out_CompanyCode]" />
                 </Sequence>
               </If.Then>
               <If.Else>

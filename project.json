@@ -4,7 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "AgilePoint.Workflow.Activities": "[1.0.2]",
-    "ATG-Helpers": "[1.0.14]",
+    "ATG-Helpers": "[1.0.15]",
     "Microsoft.Office.Interop.Outlook": "[15.0.4797.1003]",
     "UiPath.Excel.Activities": "[2.7.2]",
     "UiPath.FTP.Activities": "[1.0.7495.12930]",
@@ -15,7 +15,7 @@
   "webServices": [],
   "schemaVersion": "4.0",
   "studioVersion": "19.10.4.0",
-  "projectVersion": "1.0.0",
+  "projectVersion": "1.0.6",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -35,6 +35,17 @@
       "privateWorkflows": []
     },
     "fileInfos": []
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "in_OrchestratorQueueName",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      }
+    ],
+    "output": []
   },
   "expressionLanguage": "VisualBasic"
 }

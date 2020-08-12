@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="FTP_TestConnection" this:FTP_TestConnection.in_Password="JeEcUE7g" this:FTP_TestConnection.in_Username="AgilePoint-dev" this:FTP_TestConnection.in_Host="10.108.31.60" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/ftp" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="FTP_TestConnection" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/ftp" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Password" Type="InArgument(x:String)" />
     <x:Property Name="in_Username" Type="InArgument(x:String)" />
@@ -58,10 +58,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Descreption: Testing connection to FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: &#xD;&#xA;   in_Password&#xD;&#xA;   in_Username&#xD;&#xA;   in_Host&#xD;&#xA;   in_FTPFolder" DisplayName="FTP_TestConnection" sap:VirtualizedContainerService.HintSize="602,933" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="localPath" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Descreption: Testing connection to FTP server&#xA;Pre-Condition: n/a&#xA;Post-Condition: n/a&#xA;Arguements: &#xA;   in_Password&#xA;   in_Username&#xA;   in_Host&#xA;   in_FTPFolder" DisplayName="FTP_TestConnection" sap:VirtualizedContainerService.HintSize="602,933" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -75,17 +72,17 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="p:IFtpSession" Name="FtpSession" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,361" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Check directory" sap:VirtualizedContainerService.HintSize="526,361" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
-              <Variable x:TypeArguments="x:Boolean" Name="exist" />
+              <Variable x:TypeArguments="x:Boolean" Name="directoryExist" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <p:DirectoryExists ContinueOnError="False" DisplayName="Directory exists" Exists="[exist]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="DirectoryExists_1" RemotePath="[in_FTPFolder]" />
-            <If Condition="[NOT exist]" DisplayName="If folder does not exist" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_1">
+            <p:DirectoryExists ContinueOnError="False" DisplayName="Directory exists" Exists="[directoryExist]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="DirectoryExists_1" RemotePath="[in_FTPFolder]" />
+            <If Condition="[NOT directoryExist]" DisplayName="If folder does not exist" sap:VirtualizedContainerService.HintSize="484,207" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Throw DisplayName="Throw exception" Exception="[New BusinessRuleException(&quot;Journal Entry Folder doesn't exist on FTP Server&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
               </If.Then>

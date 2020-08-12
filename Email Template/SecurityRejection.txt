@@ -1,6 +1,0 @@
-Dear <Original Requestor>,
-
-Your security role will not allow you to post journal entries to the company codes or profit centers contained in journal entry <JE description>.  If necessary, please make revisions and re-submit your journal entry.
-
-Thanks,
-The Bot
