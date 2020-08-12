@@ -61,11 +61,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Database</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: InsertDB Log with reference values in Orchestrator&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xD;&#xA;   in_JERequestID&#xD;&#xA;   in_Submitter&#xD;&#xA;   in_SubmitterID&#xD;&#xA;   in_SubmitterEmail&#xD;&#xA;   in_Approver&#xD;&#xA;   in_ApproverID&#xD;&#xA;   in_ApproverEmail" DisplayName="SQL_InsertDBLog" sap:VirtualizedContainerService.HintSize="375.2,1768.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: InsertDB Log with reference values in Orchestrator&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;   in_JERequestID&#xA;   in_Submitter&#xA;   in_SubmitterID&#xA;   in_SubmitterEmail&#xA;   in_Approver&#xA;   in_ApproverID&#xA;   in_ApproverEmail" DisplayName="SQL_InsertDBLog" sap:VirtualizedContainerService.HintSize="375.2,1768.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Concat_SQL_String" />
       <Variable x:TypeArguments="ui:QueueItem" Name="QueOutput" />

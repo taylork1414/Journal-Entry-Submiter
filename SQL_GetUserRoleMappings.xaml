@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SQL_GetUserRoleMappings" this:SQL_GetUserRoleMappings.in_SQLCredentials="Data Source=Apss688;Initial Catalog=Journal_Entry;Persist Security Info=True;User ID=uipath_sql;Password=Bp0y@gJG1*h!" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SQL_GetUserRoleMappings" this:SQL_GetUserRoleMappings.in_UserID="GA24A" this:SQL_GetUserRoleMappings.in_SQLCredentials="Data Source=Apss688;Initial Catalog=Journal_Entry;Persist Security Info=True;User ID=uipath_sql;Password=Bp0y@gJG1*h!" this:SQL_GetUserRoleMappings.in_UserCompanyCode="1201" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_UserID" Type="InArgument(x:String)" />
     <x:Property Name="out_UserExists" Type="OutArgument(x:String)" />
@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>713.6,1446.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>713.6,1579.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SQL_GetUserRoleMappings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="24">
@@ -65,7 +65,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Get list of applicable user roles to validate in SAP&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;  In:&#xA;    in_UserID&#xA;  Out: &#xA;    out_UserExists&#xA;    out_UserRoleMappings" DisplayName="SQL_GetUserRoleMappings" sap:VirtualizedContainerService.HintSize="693.6,1346.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Get list of applicable user roles to validate in SAP&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;  In:&#xA;    in_UserID&#xA;  Out: &#xA;    out_UserExists&#xA;    out_UserRoleMappings" DisplayName="SQL_GetUserRoleMappings" sap:VirtualizedContainerService.HintSize="693.6,1479.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="SQL_Connector" />
       <Variable x:TypeArguments="sd:DataTable" Name="Query_Result" />
@@ -154,5 +154,6 @@
       </If.Else>
     </If>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="652,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Closing_Message]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="652,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[out_UserRole]" />
   </Sequence>
 </Activity>
