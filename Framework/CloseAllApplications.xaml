@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>546,1163</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>546,1185.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CloseAllApplications_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -52,9 +52,10 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="526,1103" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Do the necessary procedures for ending the process (e.g., logout) and close the used applications." DisplayName="Close All Applications" sap:VirtualizedContainerService.HintSize="526,1125.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isSAPOpen" />
       <Variable x:TypeArguments="x:Boolean" Name="JEFolderExists" />
@@ -66,17 +67,17 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (close applications)" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Closing applications...&quot;]" />
     <as:SAP_Logout DisplayName="SAP Logout" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="SAP_Logout_1" />
     <ass:Close_SAP DisplayName="Close SAP" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Close_SAP_1" />
-    <ui:PathExists DisplayName="Path Exists - JE Folder" Exists="[JEFolderExists]" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;JEExcelFilePath&quot;).ToString]" PathType="Folder" />
-    <If Condition="[JEFolderExists]" DisplayName="If JE Folder exists" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_2">
+    <ui:PathExists DisplayName="Path Exists - JE Folder" Exists="[JEFolderExists]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;JEExcelFilePath&quot;).ToString]" PathType="Folder" />
+    <If Condition="[JEFolderExists]" DisplayName="If JE Folder exists" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Local JE Files" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;JEExcelFilePath&quot;).ToString]" />
       </If.Then>
     </If>
-    <ui:PathExists DisplayName="Path Exists - JE Supp Docs" Exists="[JESuppDocsFolderExists]" sap:VirtualizedContainerService.HintSize="484,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;SupportingJEFilesPath&quot;).ToString]" PathType="Folder" />
-    <If Condition="[JESuppDocsFolderExists]" DisplayName="If JE Supp Docs Folder Exists" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
+    <ui:PathExists DisplayName="Path Exists - JE Supp Docs" Exists="[JESuppDocsFolderExists]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;SupportingJEFilesPath&quot;).ToString]" PathType="Folder" />
+    <If Condition="[JESuppDocsFolderExists]" DisplayName="If JE Supp Docs Folder Exists" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Local JE Supporting Files" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+ in_Config(&quot;SupportingJEFilesPath&quot;).ToString]" />
       </If.Then>

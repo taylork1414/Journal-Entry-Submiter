@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SQL_InsertDBLog" this:SQL_InsertDBLog.in_SQLConnectionString="Data Source=Apss688;Initial Catalog=Journal_Entry;Persist Security Info=True;User ID=uipath_sql;Password=Bp0y@gJG1*h!" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SQL_InsertDBLog" this:SQL_InsertDBLog.in_SQLConnectionString="Data Source=Apss688;Initial Catalog=Journal_Entry;Persist Security Info=True;User ID=uipath_sql;Password=Bp0y@gJG1*h!" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SQLConnectionString" Type="InArgument(x:String)" />
     <x:Property Name="in_SubmitterEmail" Type="InArgument(x:String)" />
@@ -9,14 +9,15 @@
     <x:Property Name="in_ApproverID" Type="InArgument(x:String)" />
     <x:Property Name="in_Approver" Type="InArgument(x:String)" />
     <x:Property Name="in_JEDescription" Type="InArgument(x:String)" />
+    <x:Property Name="in_SQLCredential" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>396,1112</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>396,1447.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SQL_InsertDBLog_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="22">
+    <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,10 +40,11 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>UiPath.Database</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -65,12 +67,14 @@
       <AssemblyReference>UiPath.Database</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: InsertDB Log with reference values in Orchestrator&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;   in_JERequestID&#xA;   in_Submitter&#xA;   in_SubmitterID&#xA;   in_SubmitterEmail&#xA;   in_Approver&#xA;   in_ApproverID&#xA;   in_ApproverEmail" DisplayName="SQL_InsertDBLog" sap:VirtualizedContainerService.HintSize="376,1052" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: InsertDB Log with reference values in Orchestrator&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;   in_JERequestID&#xA;   in_Submitter&#xA;   in_SubmitterID&#xA;   in_SubmitterEmail&#xA;   in_Approver&#xA;   in_ApproverID&#xA;   in_ApproverEmail" DisplayName="SQL_InsertDBLog" sap:VirtualizedContainerService.HintSize="376,1347.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Concat_SQL_String" />
       <Variable x:TypeArguments="ui:QueueItem" Name="QueOutput" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="SQL_Connector" />
       <Variable x:TypeArguments="x:String" Name="EntryDate" />
+      <Variable x:TypeArguments="ss:SecureString" Name="password" />
+      <Variable x:TypeArguments="x:String" Name="username" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -79,8 +83,25 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log a start message to start process" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Starting Utility Database to insert JE details into DB&quot;]" />
-    <Assign DisplayName="Assign entry date" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <ui:LogMessage DisplayName="Log a start message to start process" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Starting Utility Database to insert JE details into DB&quot;]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SQLCredential]" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
+    <Assign DisplayName="Replace username" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_SQLConnectionString]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_SQLConnectionString.Replace("&lt;user&gt;", username)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="replace password" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_SQLConnectionString]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_SQLConnectionString.Replace("&lt;password&gt;", New System.Net.NetworkCredential(String.Empty, password).Password)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign entry date" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[EntryDate]</OutArgument>
       </Assign.To>
@@ -88,7 +109,7 @@
         <InArgument x:TypeArguments="x:String">[DateAndTime.Now.ToString("yyyy-MM-dd hh:mm:s.FFF")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Concat Arguments to form SQL String for type string" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Concat Arguments to form SQL String for type string" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Concat_SQL_String]</OutArgument>
       </Assign.To>
@@ -96,8 +117,8 @@
         <InArgument x:TypeArguments="x:String">[String.Format("INSERT INTO Status_Report (RequestID, Date_Time, Originator, Approver, Originator_ID, Approver_ID, Originator_Email, Approver_Email, Description) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')", in_JERequestID, EntryDate, in_Submitter, in_Approver, in_SubmitterID, in_ApproverID, in_SubmitterEmail, in_ApproverEmail, in_JEDescription)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[Concat_SQL_String]" />
-    <ui:DatabaseConnect DatabaseConnection="[SQL_Connector]" DisplayName="Connect to the SQL Database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="[in_SQLConnectionString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[Concat_SQL_String]" />
+    <ui:DatabaseConnect DatabaseConnection="[SQL_Connector]" DisplayName="Connect to the SQL Database" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="[in_SQLConnectionString]" />
     <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Insert Data into the Database" ExistingDbConnection="[SQL_Connector]" sap:VirtualizedContainerService.HintSize="334,87.3333333333333" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[Concat_SQL_String]">
       <ui:ExecuteNonQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
