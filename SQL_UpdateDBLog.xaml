@@ -60,7 +60,6 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Description: Updates DB Log with Y or N depending on validation results&#xA;Pre-Condition: N/A&#xA;Post-Condition: N/A&#xA;Arguments:&#xA;    in_DBColumn&#xA;    in_Value&#xA;    in_SQLConnectionString&#xA;    in_JERequestID" DisplayName="SQL_UpdateDBLog" sap:VirtualizedContainerService.HintSize="375.2,804" sap2010:WorkflowViewState.IdRef="Sequence_1">
