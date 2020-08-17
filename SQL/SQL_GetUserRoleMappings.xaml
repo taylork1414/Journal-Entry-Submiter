@@ -81,7 +81,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="654,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Querying database to find role description for &quot; + in_CompanyCode+ &quot; matching provided company code.&quot;]" />
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SQLCredential]" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="654,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_SQLCredential]" DisplayName="Get SQL Credential" sap:VirtualizedContainerService.HintSize="654,22" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
     <Assign DisplayName="update username" sap:VirtualizedContainerService.HintSize="654,62" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[in_SQLConnectionString]</OutArgument>
